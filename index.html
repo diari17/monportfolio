@@ -6,152 +6,373 @@
     <title>Portfolio - Mame Diariatoulah DIENG</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <!-- Header -->
+    <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <h1>MDD</h1>
+                <h1>Mame Diariatoulah DIENG</h1>
             </div>
-            <nav>
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="#accueil"><i class="ri-home-2-line"></i> Accueil</a></li>
-                    <li><a href="#about"><i class="ri-user-line"></i> À propos</a></li>
-                    <li><a href="#portfolio"><i class="ri-briefcase-line"></i> Projets</a></li>
-                    <li><a href="#liens"><i class="ri-links-line"></i> Liens</a></li>
+                    <li><a href="#hero">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#portfolio">Projets</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#liens">Contact</a></li>
                 </ul>
             </nav>
+            <div class="mobile-menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
         </div>
     </header>
 
     <main>
-        <section id="accueil">
-            <div class="accueil-content">
-                <h1>Bienvenue sur mon Portfolio</h1>
-                <p>Je suis Mame Diariatoulah DIENG, une étudiante en Licence Génie Logiciel à l'Ecole Supérieure Polytechnique de Dakar, passionnée par le développement web et la science des données.</p>
-                <div class="cta-buttons">
-                    <a href="#portfolio" class="btn btn-primary">Mes Projets</a>
-                    <a href="#liens" class="btn btn-secondary">Me Contacter</a>
+        <!-- Section Hero avec nom et présentation -->
+        <section id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="intro-text">
+                        <p>Bonjour, je suis</p>
+                    </div>
+                    <div class="name-title">
+                        <h1>Mame Diariatoulah <span class="name-accent">DIENG</span></h1>
+                        <h2>Aspiring Data Engineer | Skilled in Data, Web Development & Problem Solving</h2>
+                    </div>
+                    <div class="bio-text">
+                        <p>Passionée par l'ingénierie des données, j'ai de l'expérience en développement web, gestion de base de données. Demonstrated strong analytical skills and ability to create efficient technological solutions for complex problems.</p>
+                    </div>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">+</span>
+                            <span class="stat-label">Projets</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Année d'expérience</span>
+                        </div>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#portfolio" class="btn btn-primary">Voir mes travaux</a>
+                        <a href="#liens" class="btn btn-secondary">Me contacter</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image/profil2.png" alt="Mame Diariatoulah DIENG">
                 </div>
             </div>
         </section>
 
+        <!-- Section About -->
         <section id="about">
-            <div class="section-title">
-                <h2>À propos de moi</h2>
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="section-divider"></div>
             </div>
             <div class="about-container">
-                <div class="about-image">
-                    <img src="image/profil2.webp" alt="Mame Diariatoulah DIENG">
-                </div>
-                <div class="about-text">
-                    <p>Je m'appelle Mame Diariatoulah Dieng, Diplômée en Technologie Génie Informatique et étudiante en Licence Génie Logiciel à l'École Supérieure Polytechnique de Dakar. Passionnée par le développement web et la science des données, j'explore depuis trois ans le monde de l'informatique à travers divers projets et expériences.</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="lead-text">Diplômée en Génie Logiciel et Systèmes d'Information à l'École Supérieure Polytechnique de Dakar, promotion 2025. Passionnée par la data, je me destine au métier de Data Engineer.</p>            
+                        <p>Mon parcours m'a permis d'acquérir une expertise technique en développement (Python, C, Java, PHP/Laravel) et en gestion de bases de données (MySQL, modélisation UML, optimisation). Mes expériences m'ont confortée dans mon choix de carrière.</p>
+                        
+                        <!-- Section Éducation -->
+                        <div class="education-section">
+                            <h3 class="section-category">🎓 ÉDUCATION</h3>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <div class="detail-header">
+                                        <strong class="detail-title">Licence Professionnelle en Génie Logiciel et Systèmes d'Information</strong>
+                                        <span class="detail-year">2025</span>
+                                    </div>
+                                    <span class="detail-location">École Supérieure Polytechnique, Université Cheikh Anta DIOP (Dakar)</span>
+                                    <p>Administration de Bases de Données, Programmation Orientée-Objet, Analyse des Algorithmes, Systèmes et Réseaux, Langage C, Probabilités et Statistiques</p>
+                                </div>
+
+                                <div class="detail-item">
+                                    <div class="detail-header">
+                                        <strong class="detail-title">Diplôme Supérieur en Technologie en Génie Informatique</strong>
+                                        <span class="detail-year">2022-2024</span>
+                                    </div>
+                                    <span class="detail-location">École Supérieure Polytechnique, Université Cheikh Anta DIOP (Dakar)</span>
+                                    <p>SGBD, Programmation, Analyse des Algorithmes, Architecture Système et Réseaux, Gestion des Organisations, Mathématiques</p>
+                                </div>
+
+                                <div class="detail-item">
+                                    <div class="detail-header">
+                                        <strong class="detail-title">Baccalauréat S2 (Sciences Expérimentales)</strong>
+                                        <span class="detail-year">2022</span>
+                                    </div>
+                                    <span class="detail-location">Collège Cardinal Hyacinthe Thiandoum, Grand-Yoff (Dakar)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section Expérience Professionnelle -->
+                        <div class="experience-section">
+                            <h3 class="section-category">💼 EXPÉRIENCE PROFESSIONNELLE</h3>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <div class="detail-header">
+                                        <strong class="detail-title">Stagiaire Data Analyst</strong>
+                                        <span class="detail-year">Juin 2025 - Juillet 2025</span>
+                                    </div>
+                                    <span class="detail-location">SEN'EAU, Hann Bel'Air (Dakar)</span>
+                                    <p>Collecte, nettoyage et analyse de données, création de visualisation, transformation de données brutes en informations exploitables.</p>
+                                </div>
+
+                                <div class="detail-item">
+                                    <div class="detail-header">
+                                        <strong class="detail-title">Développeur Web</strong>
+                                        <span class="detail-year">Mai 2024 - Juin 2024</span>
+                                    </div>
+                                    <span class="detail-location">DEFAR SCI, Scat Urbam 20 (Dakar)</span>
+                                    <p>Développement d'une plateforme web pour la gestion des équipes avec Laravel (PHP), conception de modules de gestion des tâches et utilisateurs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="skills-section">
-                        <h3>Compétences techniques</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item"><img src="image/html.png" alt="HTML">HTML</div>
-                            <div class="skill-item"><img src="image/css.jpg" alt="CSS">CSS</div>
-                            <div class="skill-item"><img src="image/java.jpg" alt="Java">Java</div>
-                            <div class="skill-item"><img src="image/php.png" alt="PHP">PHP</div>
-                            <div class="skill-item"><img src="image/langageC.png" alt="C+">C+</div>
-                            <div class="skill-item"><img src="image/laravel.jpg" alt="Laravel">Laravel</div>
-                            <div class="skill-item"><img src="image/mysql.jpg" alt="MySQL">MySQL</div>
-                            <div class="skill-item"><img src="image/UML.jpg" alt="UML">Langage UML</div>
-                            <div class="skill-item"><img src="image/git.png" alt="UML">git</div>
+                    <div class="skills-showcase">
+                        <h3>Technical Expertise</h3>
+                        <div class="skills-pills">
+                            <span class="skill-pill">Développement Web</span>
+                            <span class="skill-pill">Gestion de Base de données</span>
+                            <span class="skill-pill">Programmation Orienté Objet</span>
+                            <span class="skill-pill">Analyse</span>
                         </div>
                     </div>
-
-                    <div class="tools-section">
-                        <h3>Outils</h3>
-                        <div class="tools-grid">
-                            <div class="tool-item"><img src="logo github.png" alt="github">Github</div>
-                            <div class="tool-item"><img src="image/xampp.png" alt="Xampp">Xampp</div>
-                            <div class="tool-item"><img src="image/vscode.png" alt="Vscode">VSCode</div>
-                            <div class="tool-item"><img src="image/ubuntu.png" alt="Ubuntu">Ubuntu</div>
-                            <div class="tool-item"><img src="image/vmbox.jpg" alt="vmbox">Virtual box</div>
-                        </div>
-                    </div>
-
-                    <a href="https://1drv.ms/b/c/8cc510bd777a6799/EVRcZWKquENHs-77X4eB9w0Bslzv-DYlfn1NTd6oSGcQTg?e=o2WqQX" 
-                       target="_blank" class="btn btn-outline">Télécharger mon CV</a>
                 </div>
             </div>
         </section>
 
+        <!-- Section Portfolio/Projects -->
         <section id="portfolio">
-            <div class="section-title">
-                <h2>Mes Projets</h2>
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="projects-container">
-
-                <div class="project-card">
-                    <a href="#">
-                        <img src="image/chirurgie.jpg" alt="Projet 1">
-                        <div class="project-details">
-                            <h3>Plateforme de mise en relation hopitaux-chirurgien</h3>
-                            <p>Développement d'une plateforme numérique centralisée pour faciliter la mise en relation entre hôpitaux et chirurgiens spécialisés.</p>
-                            <div class="project-tags">
-                                <span>Développement Web</span>
-                                <span>Healthcare</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="Projet/Parrainage/parrainage.html">
-                        <img src="image/parrainage.jpeg" alt="Projet 2">
-                        <div class="project-details">
-                            <h3>Sunu Parrainage</h3>
-                            <p>Application web de gestion des parrainages pour les élections présidentielles au Sénégal.</p>
-                            <div class="project-tags">
-                                <span>Application Web</span>
-                                <span>Election Management</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <a href="#">
-                        <img src="image/photographe.jpeg" alt="Projet 3">
-                        <div class="project-details">
-                            <h3>Application de gestion interne pour un photographe</h3>
-                            <p>Développement d'une application centralisée pour faciliter la gestion interne de son entreprise.</p>
-                            <div class="project-tags">
-                                <span>Application Web</span>
-                                <span>Actualité</span>
-                        </div>
+            <div class="projects-showcase">
+                <div class="project-highlight">
+                    <div class="project-image">
+                        <img src="image/chirurgie.jpg" alt="Healthcare Platform">
                     </div>
-                    </a>
+                    <div class="project-info">
+                        <h3>Xët Connect</h3>
+                        <p>Développement d'une plateforme numérique centralisée pour faciliter la mise en relation entre hôpitaux et chirurgiens spécialisés.</p>
+                        <div class="project-tags">
+                            <span>Web Development</span>
+                            <span>SGBD</span>
+                            <span>Healthcare Tech</span>
+                            <span>System Design</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
                 </div>
 
-                <!--Autres projets-->
+                <div class="project-highlight">
+                    <div class="project-image">
+                        <img src="image/parrainage.jpeg" alt="Election System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Suñu Parrainage</h3>
+                        <p>Application web de gestion des parrainages pour les élections présidentielles au Sénégal.</p>
+                        <div class="project-tags">
+                            <span>Web Application</span>
+                            <span>Election Management</span>
+                            <span>Database Systems</span>
+                        </div>
+                        <a href="Projet/Parrainage/parrainage.html" class="project-link">View Project →</a>
+                    </div>
+                </div>
 
+                <div class="project-highlight">
+                    <div class="project-image">
+                        <img src="image/photographe.jpeg" alt="Business Management">
+                    </div>
+                    <div class="project-info">
+                        <h3>Photography Business Management System</h3>
+                        <p>Développement d'une application centralisée pour faciliter la gestion interne d'entreprise de photographie.</p>
+                        <div class="project-tags">
+                            <span>Business Software</span>
+                            <span>Web Application</span>
+                            <span>Process Automation</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="liens">
-            <div class="section-title">
-                <h2>Mes Liens</h2>
+        <!-- Section Skills -->
+        <section id="skills">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/mame-dieng-a40a97347" target="_blank" class="contact-link">
-                    <i class="ri-linkedin-box-fill"></i> LinkedIn
-                </a>
-                <a href="https://github.com/diari17" target="_blank" class="contact-link">
-                    <i class="ri-github-fill"></i> GitHub
-                </a>
-                <a href="mailto:diariatou1705@gmail.com" class="contact-link">
-                    <i class="ri-mail-send-line"></i> Gmail
-                </a>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Langages de programmation</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="image/java.jpg" alt="Java">
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/javascript.png" alt="JavaScript">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/php.png" alt="PHP">
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/langageC.png" alt="C++">
+                            <span>C++</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/python.jpg" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/xml.png" alt="XML">
+                            <span>XML/XSD/DTD</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/sql.png" alt="sql">
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Technologies Web</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="image/html.png" alt="HTML">
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/css.jpg" alt="CSS">
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/react.png" alt="React">
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/node.jfif" alt="Node.js">
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/laravel.jpg" alt="Laravel">
+                            <span>Laravel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Outils & Base de Données</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="image/mysql.jpg" alt="MySQL">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/git.png" alt="Git">
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/vscode.png" alt="VSCode">
+                            <span>VSCode</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/powershell.png" alt="cmd">
+                            <span>Power Shell</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/UML.jpg" alt="UML">
+                            <span>UML</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/lucidchart.png" alt="lucidchart">
+                            <span>LucidChart</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/xampp.png" alt="XAMPP">
+                            <span>XAMPP</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/vmbox.jpg" alt="vmbox">
+                            <span>VMBox</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/ubuntu.png" alt="Ubuntu">
+                            <span>Ubuntu</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/powerbi.jpg" alt="Power BI">
+                            <span>Power BI</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/anaconda.png" alt="Anaconda">
+                            <span>Anaconda</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/word.png" alt="word">
+                            <span>WORD</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="image/powerpoint.jfif" alt="PWPT">
+                            <span>Power Point</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact/Links -->
+        <section id="liens">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-content">
+                    <p class="contact-intro">Vous pouvez me contacter ou visualiser mon cv</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/mame-dieng-a40a97347" target="_blank" class="social-link">
+                            <i class="ri-linkedin-box-fill"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/diari17" target="_blank" class="social-link">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="mailto:diariatou1705@gmail.com" class="social-link">
+                            <i class="ri-mail-send-line"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://1drv.ms/w/c/8cc510bd777a6799/EQLtetGdSUREgGVftvh_iYsBLPpnCLrca_Pns15KyEDlHw?e=Rm9wYm" 
+                           target="_blank" class="social-link">
+                            <i class="ri-file-text-line"></i>
+                            <span>Visualiser mon CV</span>
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Mame Diariatoulah DIENG. Tous droits réservés.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Mame Diariatoulah DIENG. All rights reserved.</p>
+            <p class="footer-quote">Still, I'm simply passionate to the point of losing sleep.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

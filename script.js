@@ -1,172 +1,190 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+    // Gestion du menu mobile
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="ri-close-line"></i>' 
+                : '<i class="ri-menu-line"></i>';
         });
-    });
+    }
 
-    // Intersection Observer for section animations
-    const sections = document.querySelectorAll('section');
+    // Animation au défilement
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const observerCallback = (entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-section');
-                observer.unobserve(entry.target);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    };
+    }, observerOptions);
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    sections.forEach(section => observer.observe(section));
+    // Observer les éléments à animer
+    const animatedElements = document.querySelectorAll('.project-highlight, .skills-category, .social-links, .detail-item');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+
+    // Animation des statistiques
+    function animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.textContent);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+            }, 40);
+        });
+    }
+
+    // Démarrer l'animation des stats quand la section hero est visible
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                heroObserver.unobserve(entry.target);
+            }
+        });
+    });
+
+    const heroSection = document.querySelector('#hero');
+    if (heroSection) {
+        heroObserver.observe(heroSection);
+    }
+
+    // Effet de survol amélioré pour les cartes de projet
+    const projectCards = document.querySelectorAll('.project-highlight');
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px) scale(1)';
+        });
+    });
+
+    // Mise à jour automatique de l'année dans le footer
+    const currentYear = new Date().getFullYear();
+    const footerText = document.querySelector('footer p');
+    if (footerText) {
+        footerText.innerHTML = footerText.innerHTML.replace('2025', currentYear);
+    }
+
+    // Animation de typing pour l'intro (optionnel)
+    function typeWriter(element, text, speed = 50) {
+        let i = 0;
+        element.innerHTML = '';
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        type();
+    }
+
+    // Démarrer l'animation de typing sur l'élément intro
+    const introText = document.querySelector('.intro-text p');
+    if (introText) {
+        const originalText = introText.textContent;
+        typeWriter(introText, originalText);
+    }
+
+    // Smooth scrolling pour tous les liens d'ancrage
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            // Fermer le menu mobile si ouvert
+            if (mainNav && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+            }
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerHeight = document.querySelector('.main-header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 
     // Header scroll effect
-    const header = document.querySelector('header');
+    const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('header-scrolled');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.1)';
         } else {
-            header.classList.remove('header-scrolled');
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         }
     });
 
-    // Project card hover effects
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.classList.add('project-card-hover');
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.classList.remove('project-card-hover');
-        });
+    // Effet de parallaxe simple pour l'image hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('#hero');
+        if (hero && window.innerWidth > 768) {
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        }
     });
 
-    // Skill and tool hover animations
-    const skillItems = document.querySelectorAll('.skill-item, .tool-item');
-    skillItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.classList.add('skill-hover');
-        });
-
-        item.addEventListener('mouseleave', () => {
-            item.classList.remove('skill-hover');
-        });
+    // Fermer le menu mobile en cliquant à l'extérieur
+    document.addEventListener('click', (e) => {
+        if (mainNav && mainNav.classList.contains('active') && 
+            !mainNav.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            mainNav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+        }
     });
-
-    // Dynamic year in footer
-    const currentYear = new Date().getFullYear();
-    const footerYear = document.querySelector('footer p');
-    if (footerYear) {
-        footerYear.innerHTML = footerYear.innerHTML.replace('2025', currentYear);
-    }
-
-    // Simple form validation (if you add a contact form later)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-
-            let isValid = true;
-
-            if (nameInput.value.trim() === '') {
-                isValid = false;
-                nameInput.classList.add('error');
-            } else {
-                nameInput.classList.remove('error');
-            }
-
-            if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
-                isValid = false;
-                emailInput.classList.add('error');
-            } else {
-                emailInput.classList.remove('error');
-            }
-
-            if (messageInput.value.trim() === '') {
-                isValid = false;
-                messageInput.classList.add('error');
-            } else {
-                messageInput.classList.remove('error');
-            }
-
-            if (!isValid) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    // Email validation function
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
 });
 
-// Optional: Add some CSS for the new JavaScript features
-const styleElement = document.createElement('style');
-styleElement.textContent = `
-    .header-scrolled {
-        background-color: rgba(54, 32, 32, 0.9);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
+// Ajouter des styles dynamiques
+const dynamicStyles = `
+    .stat-number {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
-
-    .project-card-hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    
+    .project-highlight:nth-child(even) {
+        direction: rtl;
     }
-
-    .skill-hover {
-        background-color: #f0f0f0;
-        transform: translateY(-5px);
-        transition: all 0.3s ease;
-    }
-
-    .animate-section {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s forwards;
-    }
-
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .error {
-        border: 2px solid red;
-        animation: shake 0.5s;
-    }
-
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    
+    .project-highlight:nth-child(even) .project-info {
+        direction: ltr;
     }
 `;
-document.head.appendChild(styleElement);
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = dynamicStyles;
+document.head.appendChild(styleSheet);
