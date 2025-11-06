@@ -98,7 +98,7 @@ body {
     color: var(--text-color);
 }
 
-/* Ajustement du main pour le header fixe */
+/* header fixe */
 main {
     max-width: 1200px;
     margin: 0 auto;
